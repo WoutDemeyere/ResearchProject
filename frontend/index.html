@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"
+        integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
+        integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"
+        integrity="sha512-N4kV7GkNv7QR7RX9YF/olywyIgIwNvfEe2nZtfyj73HdjCUkAfOBDbcuJ/cTaN04JKRnw1YG1wnUyNKMsNgg3g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- <script src="https://threejs.org/examples/jsm/loaders/OBJLoader.js"referrerpolicy="no-referrer"></script> -->
+
+    <script src="js/sketch.js"></script>
+    <script src="js/objects.js"></script>
+    <script src="js/app2.js"></script>
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/screen.css">
+
+    <title>Interface Test</title>
+</head>
+
+<body>
+
+    <div class="c-container js-container js-main-focus">
+        <div class="c-toast-container js-toast">Hello there</div>
+        <cannvas class="c-main-canvas js-main-canvas"></cannvas>
+        <div class="c-window c-window-left c-close-window-h js-window-left" id="left">
+            <div class="c-v-menu-container">
+                <div class="c-menu-item" id="plane">
+                    <img src="thumbnails/plane.png" alt="plane" srcset="">
+                </div>
+                <div class="c-menu-item c-menu-item-selected" id="cube">
+                    <img src="thumbnails/box.png" alt="cube" srcset="">
+                </div>
+                <div class="c-menu-item" id="sphere">
+                    <img src="thumbnails/sphere.png" alt="sphere" srcset="">
+                </div>
+                <div class="c-menu-item" id="torus">
+                    <img src="thumbnails/torus.png" alt="torus" srcset="">
+                </div>
+                <div class="c-menu-item" id="cylinder">
+                    <img src="thumbnails/cylinder.png" alt="cylinder" srcset="">
+                </div>
+                <div class="c-menu-item" id="cone">
+                    <img src="thumbnails/cone.png" alt="cone" srcset="">
+                </div>
+                <div class="c-menu-item" id="egg">
+                    <img src="thumbnails/egg.png" alt="egg" srcset="">
+                </div>
+            </div>
+        </div>
+        <!-- <div class="c-window c-window-up c-close-window-v js-window-up"></div> -->
+        <div class="c-window c-window-right c-close-window-h js-window-right" id="right">
+            <div class="c-v-menu-container">
+                <div class="c-menu-item">
+                    <div class="c-grid-container js-texture-picker js-grid-container" id="textures">
+
+                        <div class="c-grid-item js-grid-item" id="world">
+                            <img src="textures/world.jpg" alt="">
+                        </div>
+                        <div class="c-grid-item js-grid-item" id="wood">
+                            <img src="textures/wood.jpg" alt="">
+                        </div>
+                        <div class="c-grid-item js-grid-item" id="stone">
+                            <img src="textures/stone.jpg" alt="">
+                        </div>
+                        <div class="c-grid-item js-grid-item" id="camera">
+                            <?xml version="1.0" encoding="iso-8859-1"?>
+                            <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60 60"
+                                style="enable-background:new 0 0 60 60;" xml:space="preserve">
+                                <g>
+                                    <path d="M55.201,15.5h-8.524l-4-10H17.323l-4,10H12v-5H6v5H4.799C2.152,15.5,0,17.652,0,20.299v29.368
+                                    C0,52.332,2.168,54.5,4.833,54.5h50.334c2.665,0,4.833-2.168,4.833-4.833V20.299C60,17.652,57.848,15.5,55.201,15.5z M8,12.5h2v3H8
+                                    V12.5z M58,49.667c0,1.563-1.271,2.833-2.833,2.833H4.833C3.271,52.5,2,51.229,2,49.667V20.299C2,18.756,3.256,17.5,4.799,17.5H6h6
+                                    h2.677l4-10h22.646l4,10h9.878c1.543,0,2.799,1.256,2.799,2.799V49.667z" />
+                                    <path d="M30,14.5c-9.925,0-18,8.075-18,18s8.075,18,18,18s18-8.075,18-18S39.925,14.5,30,14.5z M30,48.5c-8.822,0-16-7.178-16-16
+                                    s7.178-16,16-16s16,7.178,16,16S38.822,48.5,30,48.5z" />
+                                    <path d="M30,20.5c-6.617,0-12,5.383-12,12s5.383,12,12,12s12-5.383,12-12S36.617,20.5,30,20.5z M30,42.5c-5.514,0-10-4.486-10-10
+                                    s4.486-10,10-10s10,4.486,10,10S35.514,42.5,30,42.5z" />
+                                    <path d="M52,19.5c-2.206,0-4,1.794-4,4s1.794,4,4,4s4-1.794,4-4S54.206,19.5,52,19.5z M52,25.5c-1.103,0-2-0.897-2-2s0.897-2,2-2
+                                    s2,0.897,2,2S53.103,25.5,52,25.5z" />
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                                <g>
+                                </g>
+                            </svg></div>
+                        <div class="c-grid-item js-grid-item" id="water">
+                            <img src="textures/water.jpg" alt="">
+                        </div>
+                        <div class="c-grid-item js-grid-item c-grid-item-focus" id="color">
+                            <div class="c-grid-item-color">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="c-menu-item c-menu-item-selected">
+
+                    <div class="c-sliders-container c-color-picker js-color-picker js-slider-container" id="color">
+                        <div class="c-slider-container js-slider-color c-slider-focus">
+                            <input type="range" min="0" max="360" value="189"
+                                class="js-slider js-slider-color js-hue-slider c-slider c-hue-slider" id="hue">
+                        </div>
+
+                        <div class="c-slider-container js-slider-color">
+                            <input type="range" min="0" max="100" value="100"
+                                class="js-slider js-slider-color js-sat-slider c-slider c-sat-slider" id="sat">
+                        </div>
+
+                        <div class="c-slider-container js-slider-color">
+                            <input type="range" min="0" max="100" value="50"
+                                class="js-slider js-slider-color js-lum-slider c-slider c-lum-slider" id="lum">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="c-menu-item">
+                    <div class="c-grid-container js-texture-picker js-grid-container" id="rotation">
+
+                        <div class="c-grid-item c-grid-item-icon js-grid-item c-grid-item-focus" id="auto">
+                            <img src="thumbnails/automatic.png" alt="">
+                        </div>
+
+                        <div class="c-grid-item c-grid-item-icon js-grid-item" id="remote">
+                            <img src="thumbnails/remote.png" alt="">
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="c-menu-item">
+                    <div class="c-sliders-container js-slider-container" id="size">
+                        <div class="c-slider-container c-slider-container-w-text js-slider-size c-slider-focus">
+                            <p class="c-slider-text">size: ...</p>
+                            <input type="range" min="0" max="1000" value="400" class="js-slider  c-slider-size"
+                                id="size">
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- <div class="c-window c-window-down c-close-window-v js-window-down"></div> -->
+        </div>
+
+</body>
+
+</html>
